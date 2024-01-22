@@ -26,7 +26,7 @@ function hourTracker (){
   $('.time-block').each(function() {
     //get hold of each hourBlock id
     var hourBlockID = $(this).attr('id');
-    // split id and get hold of number, as hour10  = 10
+    // split id and get hold of number, as hour10, get 10
     var splitHour = hourBlockID.split("hour")[1];
     //converts the resulting string to an integer using parseInt
     var hourBlock = parseInt(splitHour); 
@@ -35,21 +35,21 @@ function hourTracker (){
   //create conditional statements to check time and based on that add color-code background
 
   if(hourBlock < hourNow){    10 < 12
-    //past
+    //past = grey background
     $(this).removeClass("present");
     $(this).removeClass("future");
     $(this).addClass("past");
 
 
   } else if ( hourBlock === hourNow) {
-    //present
+    //present = red background 
     $(this).removeClass("past");
     $(this).removeClass("future");
     $(this).addClass("present");
 
 
   } else {
-    //future
+    //future = green background
     $(this).removeClass("present");
     $(this).removeClass("past");
     $(this).addClass("future");
@@ -59,12 +59,14 @@ function hourTracker (){
 
   })
 
-
-
-
 }
 
 hourTracker();
+
+//user enters an event when he click save button
+$('.saveBtn').on('click', function(){
+
+})
 
 
 
