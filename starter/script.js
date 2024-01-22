@@ -12,15 +12,15 @@ function displayCurrentTime() {
 
 
 //------------color-code each block based on hour that is past/present/future--------------------//
-//if time-block hour NOW then addClass(present) 
-//if time-block hour past then addClass(past) 
-//if time-block hour is not happened yet  then addClass(future) 
+//if time-block hourNow is  NOW then addClass(present) 
+//if time-block hourNow  past then addClass(past) 
+//if time-block hourNow is not happened yet  then addClass(future) 
 
 //create function that checks and tracks hour
 function hourTracker (){
 
   //get hold of current time hour;
-  var hour = dayjs().hour();
+  var hourNow = dayjs().hour();
 
   //loop each time-block
   $('.time-block').each(function() {
@@ -31,7 +31,35 @@ function hourTracker (){
     //converts the resulting string to an integer using parseInt
     var hourBlock = parseInt(splitHour); 
     console.log(hourBlock);
+
+  //create conditional statements to check time and based on that add color-code background
+
+  if(hourBlock < hourNow){    10 < 12
+    //past
+    $(this).removeClass("present");
+    $(this).removeClass("future");
+    $(this).addClass("past");
+
+
+  } else if ( hourBlock === hourNow) {
+    //present
+    $(this).removeClass("past");
+    $(this).removeClass("future");
+    $(this).addClass("present");
+
+
+  } else {
+    //future
+    $(this).removeClass("present");
+    $(this).removeClass("past");
+    $(this).addClass("future");
+
+  }
+
+
   })
+
+
 
 
 }
