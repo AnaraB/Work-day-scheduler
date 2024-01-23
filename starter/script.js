@@ -34,7 +34,7 @@ function hourTracker (){
 
   //create conditional statements to check time and based on that add color-code background
 
-  if(hourBlock < hourNow){    10 < 12
+  if(hourBlock < hourNow){    
     //past = grey background
     $(this).removeClass("present");
     $(this).removeClass("future");
@@ -65,6 +65,16 @@ hourTracker();
 
 //user enters an event when he click save button
 $('.saveBtn').on('click', function(){
+
+  //save time block event in local storage
+  //get values of text input and time hour
+  var textInput = $(this).siblings(".description").val();
+  console.log(textInput);
+  var time = $(this).parent().attr('id');
+
+  localStorage.setItem(textInput, time);
+
+
 
 })
 
