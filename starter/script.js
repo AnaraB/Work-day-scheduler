@@ -59,9 +59,37 @@ function hourTracker (){
 
   })
 
+
+  // how to make sure that text is saved in time block when page is reloaded?
+  //create for loop to iterate time-blocks and getItems from local storage if they are there
+
+  for(let i = 9; i <= 17; i ++){
+    let key = "hour" + i;
+    let selector = "#" + key + ".description";
+
+    switch(i) {
+      case 9:
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+      case 16:
+      case 17:
+        //get value from local storage to display on page
+        $(selector).val(localStorage.getItem(key));
+        break;
+      default: 
+       console.log('no events at this hour');
+       break;
+    }
+  }
+
+
 }
 
-hourTracker();
+
 
 //user enters an event when he click save button
 $('.saveBtn').on('click', function(){
@@ -71,9 +99,11 @@ $('.saveBtn').on('click', function(){
   var textInput = $(this).siblings(".description").val();
   console.log(textInput);
   var time = $(this).parent().attr('id');
-
+ 
+  // save input and time  in local storage
   localStorage.setItem(textInput, time);
 
+  hourTracker();
 
 
 })
